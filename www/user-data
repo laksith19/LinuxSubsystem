@@ -1,4 +1,6 @@
 #cloud-config
+preserve_hostname: false
+hostname: linuxsubsystem
 users:
     - name: laksith
       shell: /bin/bash
