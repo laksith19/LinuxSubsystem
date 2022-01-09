@@ -1,4 +1,4 @@
-cp focal-server-cloudimg-amd64.img sda.img
+cp base.img sda.img
 qemu-img resize sda.img +10G
 qemu-system-x86_64 \
 -accel kvm \
