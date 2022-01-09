@@ -1,9 +1,6 @@
 #Linux Disk images
 *.iso
 
-#Shell scripts used for testing, not platform independent
-*.sh
-
 #QEMU disks
 *.qcow2
 *.img
