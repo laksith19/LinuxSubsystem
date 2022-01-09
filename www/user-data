@@ -2,7 +2,7 @@
 users:
     - name: laksith
       shell: /bin/bash
-      sudo: ['ALL=(ALL) NOPASSWD:ALL']
+      sudo: ['ALL=(ALL) ALL']
 ssh_pwauth: True
 chpasswd:
     list: |
