@@ -9,3 +9,9 @@ chpasswd:
       laksith:supersecurepassword
     expire: True
 hostname: linuxsubsystem
+package_upgrade: true
+power_state:
+    mode: poweroff
+    message: Shutting Down
+    timeout: 5
+    condition: True
