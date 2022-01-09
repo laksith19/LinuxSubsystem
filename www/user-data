@@ -10,6 +10,11 @@ chpasswd:
     expire: True
 hostname: linuxsubsystem
 package_upgrade: true
+runcmd:
+    - dpkg-reconfigure cloud-init
+    - apt-get purge cloud-init
+    - rm -rf /etc/cloud/ 
+    - rm -rf /var/lib/cloud/
 power_state:
     mode: poweroff
     message: Shutting Down
