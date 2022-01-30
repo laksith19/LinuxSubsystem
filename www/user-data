@@ -2,12 +2,10 @@
 users:
     - name: laksith
       shell: /bin/bash
+      passwd: $6$sTDfKoC4uyznEfgs$EHX4/TrbYHihWwwjHyWsRa4wPmi804badoaOJaTI1Vzx0mMttD7uEomWdZFMY3ycIzKygU.wjTPE9Voc28scX0
+      lock_passwd: false
       sudo: ['ALL=(ALL) ALL']
 ssh_pwauth: True
-chpasswd:
-    list: |
-      laksith:supersecurepassword
-    expire: True
 hostname: linuxsubsystem
 package_upgrade: true
 runcmd:
