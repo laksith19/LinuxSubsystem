@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
-import os, socket, crypt, getpass
+import os
+import crypt
+import getpass
+import socket
 
 # Checks if given port free or not. Used to check for available ports to bind to.
 def is_port_free(port):
