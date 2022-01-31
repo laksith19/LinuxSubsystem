@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 
-import sys, platform, subprocess, socket, crypt, getpass
+import os, socket, crypt, getpass
 
-
-def is_port_in_use(port):
+# Checks if given port free or not. Used to check for available ports to bind to.
+def is_port_free(port):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        return s.connect_ex(('localhost', port)) == 0
+        return s.connect_ex(('localhost', port)) != 0
 
+# Gets a Username from the user to be used with the virtual machine, uses getpass to auto generate a default name
 def get_username():
-   pass 
+    pass    
 
+# Gets a password form the user and returns encrypted password   
 def get_password():
-    print("User " + getpass.getuser() + " will be created")
-    while True:
-        p = getpass.getpass(prompt='New Passord:')
-        p2 = getpass.getpass(prompt='Confirm Password:')
-        if p == p2:
-            break
+    # Tries to get a valid password match from teh user before qutting with an error 
+    for _ in range(3):
+        passwd = getpass.getpass(prompt='New Passord:')
+        passwd_2 = getpass.getpass(prompt='Confirm Password:')
+        if passwd == passwd_2:
+            return crypt.crypt(p, crypt.mksalt(crypt.METHOD_SHA512))
         print("Passwords don't match! Resetting, re-enter passwords.")
-    return crypt.crypt(p, crypt.mksalt(crypt.METHOD_SHA512))
+    print("Exiting! Too many failed attempts.")
+    os._exit(255)
