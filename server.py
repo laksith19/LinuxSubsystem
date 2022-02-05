@@ -12,7 +12,7 @@ class noCloudServer(http.server.SimpleHTTPRequestHandler):
             self.send_response(200)
             dataFile = open(os.path.join(os.path.realpath('www'), self.path[1:]), 'r')
             print(dataFile)
-            self.wfile.write(bytes(dataFile.read(), "utf8"))
+            self.wfile.write(bytes(dataFile.read()))
         else: 
             self.send_response(404)
         return
