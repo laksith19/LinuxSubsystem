@@ -10,7 +10,7 @@ class noCloudServer(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/user-data' or self.path == '/meta-data':
             self.send_response(200)
-            dataFile = open(os.path.join(os.path.realpath('www'), self.path[1:]), 'r')
+            dataFile = open(os.path.join(os.path.realpath('www'), self.path[1:]), 'rb')
             print(dataFile)
             self.wfile.write(bytes(dataFile.read()))
         else: 
