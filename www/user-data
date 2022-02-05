@@ -2,7 +2,7 @@
 users:
     - name: laksith
       shell: /bin/bash
-      passwd: $6$sTDfKoC4uyznEfgs$EHX4/TrbYHihWwwjHyWsRa4wPmi804badoaOJaTI1Vzx0mMttD7uEomWdZFMY3ycIzKygU.wjTPE9Voc28scX0
+      passwd: $6$8pLLJrEQ21ZZmaxD$xmNWRDukc/aj3O37ZGWR/1pC1jkJ7bbMIteiXdExGlm8tUdlR/Hel3DOzx7Cto2Fcn3XIWBevZHky6HNafP710 
       lock_passwd: false
       sudo: ['ALL=(ALL) ALL']
 ssh_pwauth: True
