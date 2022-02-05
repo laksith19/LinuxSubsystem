@@ -21,7 +21,7 @@ def get_password():
         passwd = getpass.getpass(prompt='New Passord:')
         passwd_2 = getpass.getpass(prompt='Confirm Password:')
         if passwd == passwd_2:
-            return crypt.crypt(p, crypt.mksalt(crypt.METHOD_SHA512))
+            return crypt.crypt(passwd, crypt.mksalt(crypt.METHOD_SHA512))
         print("Passwords don't match! Resetting, re-enter passwords.")
     print("Exiting! Too many failed attempts.")
     os._exit(255)
