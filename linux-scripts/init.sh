@@ -10,4 +10,4 @@ qemu-system-x86_64 \
 -drive file=sda.img \
 -display none \
 -nodefaults \
--smbios type=1,serial="ds=nocloud-net;s=http://10.0.2.2:8000/"
+-smbios type=1,serial="ds=nocloud-net;s=http://_gateway:8000/" \

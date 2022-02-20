@@ -8,4 +8,4 @@ qemu-system-x86_64 \
 -device e1000,netdev=net0 \
 -netdev user,id=net0,hostfwd=tcp::2222-:22 \
 -drive file=sda.img \
--smbios type=1,serial="ds=nocloud-net;s=http://10.0.2.2:8000/"
+-smbios type=1,serial="ds=nocloud-net;s=http://_gateway:8000/" \
