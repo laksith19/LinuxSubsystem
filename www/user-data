@@ -12,6 +12,7 @@ runcmd:
     - rmmod floppy
     - update-initramfs -u
     - touch /etc/cloud/cloud-init.disabled
+    - hostnamectl set-hostname linuxsubsystem
 power_state:
     mode: poweroff
     message: Shutting Down
