@@ -23,5 +23,3 @@ with http.server.HTTPServer(("", PORT), Handler) as httpd:
     while FLAG:
         httpd.handle_request()
     httpd.server_close()
-
-print("test, got here")
