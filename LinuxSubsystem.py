@@ -12,6 +12,7 @@ def is_port_free(port):
 
 # Gets a Username from the user to be used with the virtual machine, uses getpass to auto generate a default name
 def get_username():
+    ret_val = getpass_username()
     return getpass_username()
 # Gets a password form the user and returns encrypted password   
 def get_password():
@@ -24,3 +25,11 @@ def get_password():
         print("Passwords don't match! Resetting, re-enter passwords.")
     print("Exiting! Too many failed attempts.")
     os._exit(255)
+
+def generate_config():
+    name = get_username()
+    password = get_password()
+    config = '#cloud-config\nusers:\n    - name: {name}\n      shell: /bin/bash\n      passwd: {password}\n      lock_passwd: false\n      sudo: [\'ALL=(ALL) ALL\']\nssh_pwauth: True\nhostname: linuxsubsystem\nruncmd:\n    - echo "blacklist floppy" | tee /etc/modprobe.d/blacklist-floppy.conf\n    - rmmod floppy\n    - update-initramfs -u\n    - touch /etc/cloud/cloud-init.disabled\n    - hostnamectl set-hostname linuxsubsystem\npower_state:\n    mode: poweroff\n    message: Shutting Down\n    timeout: 5\n    condition: True\n'
+    data = bytes(config, 'UTF-8')
+    print(data)
+    return data
