@@ -20,6 +20,8 @@ class noCloudServer(http.server.BaseHTTPRequestHandler):
 Handler = noCloudServer
 with http.server.HTTPServer(("", PORT), Handler) as httpd:
     print("Http Server Serving at port", PORT)
-    while FLAG:
+    i = 0
+    while FLAG and i < 10:
         httpd.handle_request()
+        i += 1
     httpd.server_close()
