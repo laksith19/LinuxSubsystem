@@ -31,5 +31,4 @@ def generate_config():
     password = get_password()
     config = f'#cloud-config\nusers:\n    - name: {name}\n      shell: /bin/bash\n      passwd: {password}\n      lock_passwd: false\n      sudo: [\'ALL=(ALL) ALL\']\nssh_pwauth: True\nhostname: linuxsubsystem\nruncmd:\n    - echo "blacklist floppy" | tee /etc/modprobe.d/blacklist-floppy.conf\n    - rmmod floppy\n    - update-initramfs -u\n    - touch /etc/cloud/cloud-init.disabled\n    - hostnamectl set-hostname linuxsubsystem\npower_state:\n    mode: poweroff\n    message: Shutting Down\n    timeout: 5\n    condition: True\n'
     data = bytes(config, 'UTF-8')
-    print(data)
     return data
