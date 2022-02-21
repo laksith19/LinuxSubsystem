@@ -8,7 +8,7 @@ PORT = 8000
 
 class noCloudServer(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        if self.path != '/user-data' && self.path != '/meta-data':
+        if self.path != '/user-data' and  self.path != '/meta-data':
             self.send_responsde(404);
             return
         self.path = 'www' + self.path
