@@ -12,7 +12,8 @@ def is_port_free(port):
 
 # Gets a Username from the user to be used with the virtual machine, uses getpass to auto generate a default name
 def get_username():
-    return getpass.username()
+    return getpass.user()
+
 # Gets a password form the user and returns encrypted password   
 def get_password():
     # Tries to get a valid password match from teh user before qutting with an error 
