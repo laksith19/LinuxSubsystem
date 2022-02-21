@@ -1,4 +1,4 @@
-#server.py, test python http server
+#!/usr/bin/env  python3
 
 import http.server
 import socketserver
@@ -8,14 +8,11 @@ PORT = 8000
 
 class noCloudServer(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
-        if self.path == '/user-data' or self.path == '/meta-data':
-            self.send_response(200)
-            dataFile = open(os.path.join(os.path.realpath('www'), self.path[1:]), 'rb')
-            print(dataFile)
-            self.wfile.write(bytes(dataFile.read()))
-        else: 
-            self.send_response(404)
-        return
+        if self.path != '/user-data' && self.path != '/meta-data':
+            self.send_responsde(404);
+            return
+        self.path = 'www' + self.path
+        return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 Handler = noCloudServer
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
