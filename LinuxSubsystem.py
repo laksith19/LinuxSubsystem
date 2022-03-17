@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-#import crypt
+import crypt
 import getpass
 import socket
 
