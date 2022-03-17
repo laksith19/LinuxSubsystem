@@ -31,6 +31,12 @@ def generate_config():
     PASSWD  = get_password()
     config = { 
             '/meta-data' : '{\n"instance-id": "iid-local01"\n}\n',
-            '/user-data' : f'#cloud-config\nusers:\n    - name: {USER}\n      shell: /bin/bash\n      passwd: {PASSWD}\n      lock_passwd: false\n      sudo: [\'ALL=(ALL) ALL\']\nssh_pwauth: True\nhostname: linuxsubsystem\nruncmd:\n    - echo "blacklist floppy" | tee /etc/modprobe.d/blacklist-floppy.conf\n    - rmmod floppy\n    - update-initramfs -u\n    - touch /etc/cloud/cloud-init.disabled\n    - hostnamectl set-hostname linuxsubsystem\npower_state:\n    mode: poweroff\n    message: Shutting Down\n    timeout: 5\n    condition: True\n'
+            '/user-data' : f'#cloud-config\nusers:\n    - name: {USER}\n'
+                           f'      shell: /bin/bash\n      passwd: {PASSWD}\n      lock_passwd: false\n'
+                            '      sudo: [\'ALL=(ALL) ALL\']\nssh_pwauth: True\nhostname: linuxsubsystem\n'
+                            'runcmd:\n    - echo "blacklist floppy" | tee /etc/modprobe.d/blacklist-floppy.conf\n'
+                            '    - rmmod floppy\n    - update-initramfs -u\n    - touch /etc/cloud/cloud-init.disabled\n'
+                            '    - hostnamectl set-hostname linuxsubsystem\npower_state:\n    mode: poweroff\n'
+                            '    message: Shutting Down\n    timeout: 5\n    condition: True\n'
 }
     return config
