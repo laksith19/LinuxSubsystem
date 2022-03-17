@@ -1,11 +1,12 @@
 #!/usr/bin/env  python3
 
+import LinuxSubsystem
 import http.server
 import os
 
 # The port where the config is served
 PORT = 8000
-
+CONTENT = LinuxSubsystem.generate_config()
 class noCloudServer(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         if self.path != '/user-data' and  self.path != '/meta-data':
