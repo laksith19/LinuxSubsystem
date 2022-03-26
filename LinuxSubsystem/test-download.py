@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
+import urllib.request
+import shutil
 
-import threading
-import subprocess
-import time
-import sys
+url = 'https://cloud-images.ubuntu.com/'\
+        'focal/current/focal-server-cloudimg-amd64.img'
+file = 'ubuntu-base.img'
+request = urllib.request.Request(url)
+print("Starting Download of base image")
+with urllib.request.urlopen(request) as response:
+    with open(file, 'wb') as f:
+        shutil.copyfileobj(response, f)
 
-t = threading.Thread(target = subprocess.run, args =(["curl", "https://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img", "-o", "ubuntu-focal-base.img"], ), kwargs = {"capture_output" : True})
-t.start()
-print("Download Started")
-print(threading.active_count())
-while t.is_alive():
-    print(".", end =' ', flush=True)
-    time.sleep(2)
-print(threading.active_count())
+print("Done with the download")
+
