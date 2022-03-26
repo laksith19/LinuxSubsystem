@@ -8,8 +8,17 @@ file = 'ubuntu-base.img'
 request = urllib.request.Request(url)
 print("Starting Download of base image")
 with urllib.request.urlopen(request) as response:
+    total_size = int(response.info()['Content-Length'])
+    completion = 0
     with open(file, 'wb') as f:
-        shutil.copyfileobj(response, f)
+        while True:
+            buffer = response.read(shutil.COPY_BUFSIZE)
+            if not buffer:
+                break
+            f.write(buffer)
+            completion += len(buffer) / total_size
+            print("Completion Percentage: ", completion * 100, "%")
+
 
 print("Done with the download")
 
