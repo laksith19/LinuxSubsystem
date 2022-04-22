@@ -3,7 +3,7 @@ import urllib.request
 import shutil
 
 url = 'https://cloud-images.ubuntu.com/'\
-        'focal/current/focal-server-cloudimg-amd64.img'
+        'jammy/current/jammy-server-cloudimg-amd64.img'
 file = 'ubuntu-base.img'
 request = urllib.request.Request(url)
 print("Starting Download of base image")
