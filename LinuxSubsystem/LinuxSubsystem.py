@@ -16,7 +16,7 @@ def get_username():
 
 # Gets a password form the user and returns encrypted password   
 def get_password():
-    # Tries to get a valid password match from teh user before qutting with an error 
+    # Tries to get a valid password match from the user before qutting with an error 
     for _ in range(3):
         passwd = getpass.getpass(prompt='Password:')
         passwd_2 = getpass.getpass(prompt='Confirm Password:')
