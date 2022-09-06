@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import crypt
 import getpass
 import socket
 
@@ -21,7 +20,18 @@ def get_password():
         passwd = getpass.getpass(prompt='Password:')
         passwd_2 = getpass.getpass(prompt='Confirm Password:')
         if passwd == passwd_2:
-            return crypt.crypt(passwd, crypt.mksalt(crypt.METHOD_SHA512))
+            try:
+                import crypt
+                return crypt.crypt(passwd, crypt.mksalt(crypt.METHOD_SHA512))
+            except ImportError:
+                pass
+            try:
+                from passlib.hash import sha512_crypt as crypt
+                return crypt.hash(passwd)
+
+            except ImportError:
+                print("Please install passlib using the command: \npip install passlib")
+                os._exit(255)
         print("Passwords don't match! Resetting, re-enter passwords.")
     print("Exiting! Too many failed attempts.")
     os._exit(255)
